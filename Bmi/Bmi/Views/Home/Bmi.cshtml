@@ -1,0 +1,44 @@
+﻿@model Bmi.Models.CurrentUserBmiViewModel
+ 
+<h2>@ViewBag.Title</h2>
+
+<h4>Current Signed In Users Bmi Details:</h4>
+
+<table class="table-hover claim-table">
+    <tr>
+        <th class="claim-type claim-data claim-head">User Height (m)</th>
+        <th class="claim-data claim-head">User Weight (kg)</th>
+        <th class="claim-data claim-head">User Bmi</th>
+        <th class="claim-data claim-head">User Bmi Category</th>
+    </tr>
+    
+
+    <tr>
+        <td class="claim-type claim-data">@Model.Height</td>
+        <td class="claim-data">@Model.Weight</td>
+        <td class="claim-data">@Model.Bmi</td>
+        <td class="claim-data">@Model.Category</td>
+    </tr>
+    
+</table>
+
+<h2>Upload File</h2>
+ 
+@using (Html.BeginForm("Upload", "Home", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()   
+    <div class="form-group">
+        <input type="file" id="dataFile" name="upload" />
+    </div>
+     
+    <div class="form-group">
+        <input type="submit" value="Upload" class="btn btn-default" />
+    </div>
+     
+    if (Model != null)
+    {
+       
+    }
+}
